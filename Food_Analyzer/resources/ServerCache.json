@@ -1,0 +1,79 @@
+{
+  "009800146130": {
+    "name": "RAFFAELLO, ALMOND COCONUT TREAT, UPC: 009800146130",
+    "ndbno": "45142036",
+    "nutrients": [
+      {
+        "name": "Energy",
+        "unit": "kcal",
+        "value": "633"
+      },
+      {
+        "name": "Protein",
+        "unit": "g",
+        "value": "6.67"
+      },
+      {
+        "name": "Total lipid (fat)",
+        "unit": "g",
+        "value": "50.00"
+      },
+      {
+        "name": "Carbohydrate, by difference",
+        "unit": "g",
+        "value": "40.00"
+      },
+      {
+        "name": "Fiber, total dietary",
+        "unit": "g",
+        "value": "3.3"
+      },
+      {
+        "name": "Sugars, total",
+        "unit": "g",
+        "value": "33.33"
+      },
+      {
+        "name": "Calcium, Ca",
+        "unit": "mg",
+        "value": "133"
+      },
+      {
+        "name": "Iron, Fe",
+        "unit": "mg",
+        "value": "1.20"
+      },
+      {
+        "name": "Sodium, Na",
+        "unit": "mg",
+        "value": "117"
+      },
+      {
+        "name": "Vitamin C, total ascorbic acid",
+        "unit": "mg",
+        "value": "0.0"
+      },
+      {
+        "name": "Vitamin A, IU",
+        "unit": "IU",
+        "value": "0"
+      },
+      {
+        "name": "Fatty acids, total saturated",
+        "unit": "g",
+        "value": "30.000"
+      },
+      {
+        "name": "Fatty acids, total trans",
+        "unit": "g",
+        "value": "0.000"
+      },
+      {
+        "name": "Cholesterol",
+        "unit": "mg",
+        "value": "17"
+      }
+    ],
+    "manu": "Ferrero U.S.A., Incorporated"
+  }
+}

@@ -44,7 +44,7 @@ public class TestCacheOperator {
 	public void foodIsAddedInCacheSuccessfully() throws FileNotFoundException {
 		try {
 			Food food = new Food("RAFFAELLO, UPC: 009800146130", "123456", new ArrayList<Nutrition>(), "raffy");
-			cache.addFoodInCache(food);
+			cache.addFood(food);
 			Map<String, Food> cacheContent = getCacheContent();
 			assertNotNull(cacheContent.get("009800146130"));
 		} finally {
@@ -57,8 +57,8 @@ public class TestCacheOperator {
 		try {
 			Food firstFood = new Food("RAFFAELLO, UPC: 009800146130", "123456", new ArrayList<Nutrition>(), "raffy");
 			Food secondFood = new Food("RAFFAELLO, UPC: 009800146130", "123456", new ArrayList<Nutrition>(), "raffy");
-			cache.addFoodInCache(firstFood);
-			cache.addFoodInCache(secondFood);
+			cache.addFood(firstFood);
+			cache.addFood(secondFood);
 			Map<String, Food> cacheContent = getCacheContent();
 			assertEquals(1, cacheContent.size());
 		} finally {
@@ -75,7 +75,7 @@ public class TestCacheOperator {
 	public void foodWithExistingUpcIsReturnedSuccessfully() throws FileNotFoundException, FoodNotFoundException {
 		try {
 			Food food = new Food("RAFFAELLO, UPC: 009800146130", "123456", new ArrayList<Nutrition>(), "raffy");
-			cache.addFoodInCache(food);
+			cache.addFood(food);
 			assertNotNull(cache.getFoodByUpc("009800146130"));
 		} finally {
 			deleteFileContent();

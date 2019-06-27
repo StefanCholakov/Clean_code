@@ -84,7 +84,7 @@ public class Server {
 		}
 	}
 
-	public Food getFoodByNDBNumber(String ndb) throws FoodNotFoundException {
+	public Food getFoodByNDB(String ndb) throws FoodNotFoundException {
 		final String requestUri = "https://api.nal.usda.gov/ndb/reports/?ndbno=" + ndb + "&api_key=" + API_KEY;
 		HttpRequest request = HttpRequest.newBuilder().uri(URI.create(requestUri)).build();
 		try {
@@ -97,7 +97,7 @@ public class Server {
 			}
 
 			Food foodReport = apiResponse.getFoodReport();
-			cache.addFoodInCache(foodReport);
+			cache.addFood(foodReport);
 			return foodReport;
 		} catch (IOException | InterruptedException e) {
 			LOGGER.log(Level.SEVERE, "An error occured while sending request to the food api", e);

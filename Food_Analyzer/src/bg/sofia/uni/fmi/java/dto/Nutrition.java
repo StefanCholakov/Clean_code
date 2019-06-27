@@ -14,9 +14,6 @@ public class Nutrition {
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Nutrition: " + name + " " + value + unit + "\n");
-
-		return builder.toString();
+		return "Nutrition: " + name + " " + value + unit + "\n";
 	}
 }

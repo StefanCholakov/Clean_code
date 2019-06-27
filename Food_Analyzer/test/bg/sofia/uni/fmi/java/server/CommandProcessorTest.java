@@ -69,7 +69,7 @@ public class CommandProcessorTest {
 			throws CommandException, BarcodeException, InterruptedException, FoodNotFoundException {
 
 		final String exceptionMessage = "Food with NDB number specified does not exist";
-		doThrow(new FoodNotFoundException(exceptionMessage)).when(serverMock).getFoodByNDBNumber(anyString());
+		doThrow(new FoodNotFoundException(exceptionMessage)).when(serverMock).getFoodByNDB(anyString());
 		AbstractCommand userCommand = CommandFactory.getCommand("get-food-report invalid_ndb");
 		commandProcessor.processCommand(userCommand);
 		verify(writerMock).println(exceptionMessage);
@@ -84,7 +84,7 @@ public class CommandProcessorTest {
 		nutritions.add(new Nutrition("Protein", "0.71", "g"));
 		Food food = new Food("orange", "123456", nutritions, "1884498884");
 
-		when(serverMock.getFoodByNDBNumber(anyString())).thenReturn(food);
+		when(serverMock.getFoodByNDB(anyString())).thenReturn(food);
 		AbstractCommand userCommand = CommandFactory.getCommand("get-food-report 123456");
 		commandProcessor.processCommand(userCommand);
 		verify(writerMock).println(food.getReportResult());

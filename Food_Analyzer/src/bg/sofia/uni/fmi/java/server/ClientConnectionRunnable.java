@@ -41,15 +41,13 @@ public class ClientConnectionRunnable implements Runnable {
 		} catch (IOException e) {
 			LOGGER.log(Level.SEVERE, "Exception while trying to use client socket", e);
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+			LOGGER.log(Level.WARNING, "Exception while reading command from a user", e);
 		}
 	}
 
 	private void initializeLogger() {
 		try {
-			handler = new FileHandler("resources\\logs.log", true);
+			handler = new FileHandler("resources\\logs.log", 0, 1, true);
 			Logger rootLog = Logger.getLogger("");
 			Handler[] handlers = rootLog.getHandlers();
 			for (Handler handler : handlers) {

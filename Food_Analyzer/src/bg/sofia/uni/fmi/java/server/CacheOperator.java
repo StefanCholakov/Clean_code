@@ -24,14 +24,14 @@ public class CacheOperator {
 	}.getType();;
 
 	private Gson gson;
-	private File usersFile;
+	private File cache;
 
 	public CacheOperator(Path filePath) {
 		gson = new GsonBuilder().setPrettyPrinting().create();
-		usersFile = filePath.toFile();
+		cache = filePath.toFile();
 	}
 
-	public synchronized void addFoodInCache(Food food) {
+	public synchronized void addFood(Food food) {
 		if (isFoodExisting(food)) {
 			return;
 		}
@@ -54,7 +54,7 @@ public class CacheOperator {
 	}
 
 	private HashMap<String, Food> getAllFoods() {
-		try (JsonReader reader = new JsonReader(new FileReader(usersFile));) {
+		try (JsonReader reader = new JsonReader(new FileReader(cache));) {
 			HashMap<String, Food> allFoods = gson.fromJson(reader, FOOD_MAP_TYPE);
 			if (allFoods == null) {
 				return new HashMap<String, Food>();
@@ -67,7 +67,7 @@ public class CacheOperator {
 	}
 
 	private synchronized void writeFoodsInCache(HashMap<String, Food> foods) {
-		try (PrintWriter writer = new PrintWriter(new FileOutputStream(usersFile))) {
+		try (PrintWriter writer = new PrintWriter(new FileOutputStream(cache))) {
 			gson.toJson(foods, writer);
 		} catch (IOException e) {
 			System.err.println("An error occured while trying to write food reports in cache");

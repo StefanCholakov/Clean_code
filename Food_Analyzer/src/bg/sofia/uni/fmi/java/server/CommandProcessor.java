@@ -18,7 +18,7 @@ public class CommandProcessor {
 		this.server = server;
 	}
 
-	public void processCommand(AbstractCommand command) throws InterruptedException {
+	public void processCommand(AbstractCommand command) {
 		String commandType = command.getType();
 		Map<String, String> parameters = command.getParameters();
 
@@ -55,7 +55,7 @@ public class CommandProcessor {
 	private void getFoodReportByNdb(Map<String, String> parameters) {
 		try {
 			String ndbNumber = parameters.get(Constants.NDB_PARAMETER);
-			Food food = server.getFoodByNDBNumber(ndbNumber);
+			Food food = server.getFoodByNDB(ndbNumber);
 			if (food != null) {
 				writer.println(food.getReportResult());
 			}

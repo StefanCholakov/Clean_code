@@ -9,8 +9,18 @@ public abstract class AbstractCommand implements Serializable {
 
 	protected Map<String, String> parameters;
 
+	/**
+	 * @return the type of the given command
+	 */
 	public abstract String getType();
 
+	/**
+	 * Checks whether the given command has a valid syntax or not
+	 * 
+	 * @return true - if the command has a valid syntax
+	 *         <p>
+	 *         false - otherwise
+	 */
 	public abstract boolean isValid();
 
 	public Map<String, String> getParameters() {

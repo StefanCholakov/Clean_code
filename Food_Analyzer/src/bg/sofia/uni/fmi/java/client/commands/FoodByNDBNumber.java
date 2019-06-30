@@ -4,6 +4,9 @@ import java.util.HashMap;
 
 import bg.sofia.uni.fmi.java.server.Constants;
 
+/*
+ * Represents client's command 'get-food-report'
+ */
 public class FoodByNDBNumber extends AbstractCommand {
 
 	private static final long serialVersionUID = 3530426780260545508L;

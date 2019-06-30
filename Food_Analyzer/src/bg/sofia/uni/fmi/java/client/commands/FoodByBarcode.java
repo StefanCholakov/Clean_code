@@ -7,6 +7,9 @@ import bg.sofia.uni.fmi.java.client.BarcodeDecoder;
 import bg.sofia.uni.fmi.java.exceptions.BarcodeException;
 import bg.sofia.uni.fmi.java.server.Constants;
 
+/*
+ * Represents client's command 'get-food-by-barcode'
+ */
 public class FoodByBarcode extends AbstractCommand {
 
 	private static final long serialVersionUID = -6111066208056732403L;

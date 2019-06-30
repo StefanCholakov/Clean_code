@@ -16,6 +16,10 @@ import bg.sofia.uni.fmi.java.exceptions.BarcodeException;
 import bg.sofia.uni.fmi.java.exceptions.CommandException;
 import bg.sofia.uni.fmi.java.server.Constants;
 
+/**
+ * Represents a single client. Provides methods for connecting to the server and
+ * processing user input.
+ */
 public class Client {
 
 	private static final Logger LOGGER = Logger.getLogger(Client.class.getName());

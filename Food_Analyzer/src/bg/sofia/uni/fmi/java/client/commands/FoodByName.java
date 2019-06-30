@@ -4,6 +4,9 @@ import java.util.HashMap;
 
 import bg.sofia.uni.fmi.java.server.Constants;
 
+/*
+ * Represents client's command 'get-food <name>'
+ */
 public class FoodByName extends AbstractCommand {
 
 	private static final long serialVersionUID = 2153171668111571678L;

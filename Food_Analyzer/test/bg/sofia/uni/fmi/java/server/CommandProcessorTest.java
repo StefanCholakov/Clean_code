@@ -44,7 +44,7 @@ public class CommandProcessorTest {
 			throws FoodNotFoundException, CommandException, BarcodeException, InterruptedException {
 
 		final String exceptionMessage = "Food with name specified does not exist";
-		doThrow(new FoodNotFoundException(exceptionMessage)).when(serverMock).getFoodByName(anyString());
+		doThrow(new FoodNotFoundException(exceptionMessage)).when(serverMock).getFoodsByName(anyString());
 		AbstractCommand userCommand = CommandFactory.getCommand("get-food invalid_name");
 		commandProcessor.processCommand(userCommand);
 		verify(writerMock).println(exceptionMessage);
@@ -58,7 +58,7 @@ public class CommandProcessorTest {
 		List<Food> foodsByGivenName = new ArrayList<>();
 		foodsByGivenName.add(food);
 
-		when(serverMock.getFoodByName(anyString())).thenReturn(foodsByGivenName);
+		when(serverMock.getFoodsByName(anyString())).thenReturn(foodsByGivenName);
 		AbstractCommand userCommand = CommandFactory.getCommand("get-food invalid_name");
 		commandProcessor.processCommand(userCommand);
 		verify(writerMock).println(food.getSearchResult());

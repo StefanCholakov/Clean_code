@@ -18,6 +18,11 @@ public class CommandProcessor {
 		this.server = server;
 	}
 
+	/**
+	 * Processes the user's command after it was read depending on its type.
+	 * 
+	 * @param command - the user's command
+	 */
 	public void processCommand(AbstractCommand command) {
 		String commandType = command.getType();
 		Map<String, String> parameters = command.getParameters();
@@ -25,15 +30,15 @@ public class CommandProcessor {
 		switch (commandType) {
 
 		case Constants.GET_FOOD_BY_NAME:
-			getFoodByName(parameters);
+			listFoodsByName(parameters);
 			break;
 
 		case Constants.GET_FOOD_REPORT:
-			getFoodReportByNdb(parameters);
+			printFoodReportByNDB(parameters);
 			break;
 
 		case Constants.GET_FOOD_BY_BARCODE:
-			getFoodByBarcode(parameters);
+			printFoodReportByBarcode(parameters);
 			break;
 
 		default:
@@ -42,17 +47,29 @@ public class CommandProcessor {
 		}
 	}
 
-	private void getFoodByName(Map<String, String> parameters) {
+	/**
+	 * Shows basic information about food by it's name
+	 * 
+	 * @param parameters - map containing entry 'name - food_name' where food_name
+	 *                   is the name of the food to be searched.
+	 */
+	private void listFoodsByName(Map<String, String> parameters) {
 		try {
 			String foodName = parameters.get(Constants.NAME_PARAMETER);
-			List<Food> foodList = server.getFoodByName(foodName);
+			List<Food> foodList = server.getFoodsByName(foodName);
 			foodList.stream().forEach(food -> writer.println(food.getSearchResult()));
 		} catch (FoodNotFoundException e) {
 			writer.println(e.getMessage());
 		}
 	}
 
-	private void getFoodReportByNdb(Map<String, String> parameters) {
+	/**
+	 * Prints report for a given food by it's NDB number
+	 * 
+	 * @param parameters - map containing entry 'ndb - ndb_number' where ndb_number
+	 *                   is the NDB of the food to be searched.
+	 */
+	private void printFoodReportByNDB(Map<String, String> parameters) {
 		try {
 			String ndbNumber = parameters.get(Constants.NDB_PARAMETER);
 			Food food = server.getFoodByNDB(ndbNumber);
@@ -64,7 +81,13 @@ public class CommandProcessor {
 		}
 	}
 
-	private void getFoodByBarcode(Map<String, String> parameters) {
+	/**
+	 * Prints report for a given food by it's barcode
+	 * 
+	 * @param parameters - map containing at entry 'upc - upc_code' where upc_code
+	 *                   is the UPC of the food to be searched.
+	 */
+	private void printFoodReportByBarcode(Map<String, String> parameters) {
 		try {
 			String upcCode = parameters.get(Constants.UPC_PARAMETER);
 			Food food = server.getFoodByUpc(upcCode);

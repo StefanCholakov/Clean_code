@@ -64,7 +64,12 @@ public class Server {
 		}
 	}
 
-	public List<Food> getFoodByName(String name) throws FoodNotFoundException {
+	/**
+	 * @param name of the food
+	 * @return list of foods with the specified name
+	 * @throws FoodNotFoundException if there is no food with the given name
+	 */
+	public List<Food> getFoodsByName(String name) throws FoodNotFoundException {
 		name = name.replace(" ", Constants.HTTP_SPACE);
 		final String requestUri = "https://api.nal.usda.gov/ndb/search/?q=" + name + "&api_key=" + API_KEY;
 		HttpRequest request = HttpRequest.newBuilder().uri(URI.create(requestUri)).build();
@@ -84,6 +89,11 @@ public class Server {
 		}
 	}
 
+	/**
+	 * @param ndb number of the food
+	 * @return food with the specified NDB
+	 * @throws FoodNotFoundException if there is no food with the given NDB
+	 */
 	public Food getFoodByNDB(String ndb) throws FoodNotFoundException {
 		final String requestUri = "https://api.nal.usda.gov/ndb/reports/?ndbno=" + ndb + "&api_key=" + API_KEY;
 		HttpRequest request = HttpRequest.newBuilder().uri(URI.create(requestUri)).build();
@@ -105,6 +115,11 @@ public class Server {
 		}
 	}
 
+	/**
+	 * @param upcCode code of the food
+	 * @return food with the specified UPC code
+	 * @throws FoodNotFoundException if there is no food with the given UPC
+	 */
 	public Food getFoodByUpc(String upcCode) throws FoodNotFoundException {
 		return cache.getFoodByUpc(upcCode);
 	}
